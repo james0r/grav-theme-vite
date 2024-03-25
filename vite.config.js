@@ -34,16 +34,18 @@ export default defineConfig({
   },
   plugins: [
     laravel({
+      hotFile: 'build/hot',
       input: [
-        'src/theme.js',
-        'src/theme.css',
+        './src/theme.js',
+        './src/theme.css',
         // 'src/scss/theme.scss'
       ],
       refresh: [
         '../../config/**/*.yaml',
         '../../pages/**/*.md',
         './blueprints/**/*.yaml',
-        './js/**/*.js',
+        './src/**/*.js',
+        './src/**/*.css',
         './templates/**/*.twig',
         './grav-theme-vite.yaml',
         './grav-theme-vite.php'
