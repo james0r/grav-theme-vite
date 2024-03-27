@@ -22,7 +22,7 @@
     {% endfor %}
 {% endmacro %}
 
-<ul>
+<ul class="flex space-x-2">
     {% if config.theme.dropdown.enabled %}
         {{ _self.loop(pages) }}
     {% else %}
