@@ -3,15 +3,15 @@
 <html lang="{{ (grav.language.getActive ?: grav.config.site.default_lang)|e }}">
 <head>
     {% block head %}
-        <meta charset="utf-8" />
+        <meta charset="utf-8"/>
         <title>{% if header.title %}{{ header.title|e }} | {% endif %}{{ site.title|e }}</title>
 
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         {% include 'partials/metadata.html.twig' %}
 
-        <link rel="icon" type="image/png" href="{{ url('theme://images/logo.png')|e }}" />
-        <link rel="canonical" href="{{ page.url(true, true)|e }}" />
+        <link rel="icon" type="image/png" href="{{ url('theme://images/logo.png')|e }}"/>
+        <link rel="canonical" href="{{ page.url(true, true)|e }}"/>
     {% endblock head %}
 
     {% block stylesheets %}
@@ -19,7 +19,7 @@
     {% endblock %}
 
     {% block javascripts %}
-	    {% do assets.addJs('theme://js/main' ~ extension ~ '.js', 98) %}
+        {% do assets.addJs('theme://js/main' ~ extension ~ '.js', 98) %}
     {% endblock %}
 
     {% block assets deferred %}
@@ -30,26 +30,32 @@
 <body id="top" class="{{ page.header.body_classes|e }} {{ config.theme.production ?: 'debug-screens' }}">
 
 {% block header %}
-    <div class="header">
-        <div class="">
-            <a class="logo" href="{{ home_url|e }}">
-                {{ config.site.title|e }}
-            </a>
-            {% block header_navigation %}
-                <nav class="main-nav">
-                    {% include 'partials/navigation.html.twig' %}
-                </nav>
-            {% endblock %}
+    <div id="header" class="py-2">
+        <div class="px-6 md:px-8">
+            <div class="container flex items-center space-x-4 md:space-x-8">
+                <a class="text-3xl font-bold" href="{{ home_url|e }}">
+                    {{ config.site.title|e }}
+                </a>
+                {% block header_navigation %}
+                    <nav class="main-nav">
+                        {% include 'partials/navigation.html.twig' %}
+                    </nav>
+                {% endblock %}
+            </div>
         </div>
     </div>
 {% endblock %}
 
 {% block body %}
-    <section id="body">
-        <div class="prose">
-            {% block content %}{% endblock %}
+    <main id="body" class="pt-12">
+        <div class="px-6 md:px-8">
+            <div class="container">
+                <div class="prose">
+                    {% block content %}{% endblock %}
+                </div>
+            </div>
         </div>
-    </section>
+    </main>
 {% endblock %}
 
 {% block footer %}
