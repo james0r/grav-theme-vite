@@ -1,0 +1,36 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% block bottom %}
+    {{ parent() }}
+{% endblock %}
+
+{% block header_navigation %}
+    {% if show_onpage_menu %}
+        <ul class="navigation">
+            {% for module in page.collection() if module.header.visible is not same as(false) %}
+                {% set current_module = (module.active or module.activeChild) ? 'active' : '' %}
+                <li><a class="{{ current_module }}" href="#{{ module.menu|hyphenize }}">{{ module.menu }}</a></li>
+            {% endfor %}
+            {% for mitem in site.menu %}
+                <li>
+                    <a {% if mitem.class %}class="{{ mitem.class }}"{% endif %} href="{{ mitem.url }}">
+                        {% if mitem.icon %}<i class="fa fa-{{ mitem.icon }}"></i>{% endif %}
+                        {{ mitem.text }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    {% for module in page.collection() %}
+        {{ module.content|raw }}
+    {% endfor %}
+{% endblock %}

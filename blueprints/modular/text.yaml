@@ -1,0 +1,14 @@
+title: Text
+'@extends': default
+
+form:
+  fields:
+    tabs:
+      fields:
+        content:
+          fields:
+            header.media_order:
+              label: Page Media (first one will be displayed next to your content)
+            header.dark_theme:
+              label: Render with Dark Theme
+              type: toggle
