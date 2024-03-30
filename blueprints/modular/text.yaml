@@ -12,3 +12,7 @@ form:
             header.dark_theme:
               label: Render with Dark Theme
               type: toggle
+              highlight: 1
+              options:
+                1: PLUGIN_ADMIN.YES
+                0: PLUGIN_ADMIN.NO

@@ -1,0 +1,61 @@
+title: Items
+'@extends': default
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 2
+
+      fields:
+        items:
+          type: tab
+          title: Items
+          fields:
+
+            header.items:
+              name: items
+              type: list
+              label: Items
+
+              fields:
+                .link:
+                  type: elements
+                  label: 'Link Type'
+                  size: small
+                  default: internal_link
+                  options:
+                    internal_link: Internal Link
+                    external_link: External Link
+                  fields:
+                    internal_link:
+                      type: element
+                      fields:
+                        .text:
+                          type: text
+                          label: Text
+                        .page:
+                          type: pages
+                          label: Page
+                          show_root: true
+                          show_all: false
+                          show_modular: false
+                          show_invisible: false
+                          show_untranslated: false
+                          default: /home
+                    external_link:
+                      type: element
+                      fields:
+                        .text:
+                          type: text
+                          label: Text
+                        .url:
+                          type: url
+                          label: URL
+                        .new_tab:
+                          type: toggle
+                          label: Open in new tab
+                          highlight: 0
+                          options:
+                            1: PLUGIN_ADMIN.YES
+                            0: PLUGIN_ADMIN.NO

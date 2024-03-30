@@ -1,21 +1,31 @@
 {% set grid_size = theme_var('grid-size') %}
 {% set image = page.media.images|first %}
 
-<section class="section modular-text {{ page.header.class }} bg-gray">
-    <section class="container">
-        <div class="grid grid-cols-2">
+{% if page.header.dark_theme %}
+    {% set container_classes = ['bg-black', 'text-white'] %}
+{% else %}
+    {% set container_classes = [] %}
+{% endif %}
+
+<section class="modular-text {{ page.header.body_classes }}">
+    <div class="px-6 md:px-8">
+        <section class="container {{ container_classes|join(' ') }}">
             {% if image %}
-                <div class="">
-                    {{ image.html|raw }}
-                </div>
-                <div class="">
-                    {{ content|raw }}
+                <div class="block sm:grid grid-cols-2">
+                    <div class="">
+                        {{ image.html|raw }}
+                    </div>
+                    <div class="">
+                        {{ content|raw }}
+                    </div>
                 </div>
             {% else %}
-                <div class="">
-                    {{ content|raw }}
+                <div>
+                    <div class="">
+                        {{ content|raw }}
+                    </div>
                 </div>
             {% endif %}
-        </div>
-    </section>
+        </section>
+    </div>
 </section>
